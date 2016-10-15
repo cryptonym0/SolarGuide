@@ -18,12 +18,14 @@ public class DialogFragment extends android.support.v4.app.Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PLANET_INFO = "param2";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    TextView tv;
+    private TextView tv;
+    private String currentInfo;
+    int request_code_1 = 1;
 
     private OnFragmentInteractionListener mListener;
 
@@ -44,37 +46,35 @@ public class DialogFragment extends android.support.v4.app.Fragment {
         DialogFragment fragment = new DialogFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_PLANET_INFO, param2);
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void onCreate(Bundle myBundle) {
+        super.onCreate(myBundle);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle myBundle) {
+        super.onCreate(myBundle);
         // Inflate the layout for this fragment
-
         View planetd = inflater.inflate(R.layout.info_fragment, container, false);
         tv = (TextView) planetd.findViewById(R.id.dialogFragment);
+
+
+        if (myBundle != null) {
+            temp = myBundle.getString(test);
+            updateText(temp);
+
+        }
+
+        //Find layouts
 
         return planetd;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(String uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -88,10 +88,9 @@ public class DialogFragment extends android.support.v4.app.Fragment {
     }
 
     public void updateText(String data) {
-
-
+        temp = data;
         if (data.equals(null)) {
-            tv.setText("Welcome to COMP2160 Fragment tutorial");
+            tv.setText("Data Is Null");
         } else {
             Resources res = getResources();
             String[] planets = res.getStringArray(R.array.descriptions);
@@ -150,5 +149,13 @@ public class DialogFragment extends android.support.v4.app.Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(String uri);
+    }
+
+    String temp;
+    String test = "Egg";
+    @Override
+    public void onSaveInstanceState(Bundle myBundle) {
+        myBundle.putString(test, temp);
+        super.onSaveInstanceState(myBundle);
     }
 }

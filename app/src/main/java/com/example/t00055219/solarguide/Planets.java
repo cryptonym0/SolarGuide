@@ -87,17 +87,7 @@ public class Planets extends ListFragment {
         return planetview;
     }
 
-//    @Override
-//    public boolean onContextItemSelected(MenuItem item) {
-//        return super.onContextItemSelected(item);
-//    }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(String uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -121,7 +111,6 @@ public class Planets extends ListFragment {
         super.onDetach();
         mListener = null;
     }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
