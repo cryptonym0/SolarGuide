@@ -24,8 +24,8 @@ public class DialogFragment extends android.support.v4.app.Fragment {
     private String mParam1;
     private String mParam2;
     private TextView tv;
-    private String currentInfo;
-    int request_code_1 = 1;
+    String temp;
+    String test = "";
 
     private OnFragmentInteractionListener mListener;
 
@@ -51,6 +51,13 @@ public class DialogFragment extends android.support.v4.app.Fragment {
         return fragment;
     }
 
+
+    @Override
+    public void onSaveInstanceState(Bundle myBundle) {
+        myBundle.putString(test, temp);
+        super.onSaveInstanceState(myBundle);
+    }
+
     @Override
     public void onCreate(Bundle myBundle) {
         super.onCreate(myBundle);
@@ -63,14 +70,11 @@ public class DialogFragment extends android.support.v4.app.Fragment {
         View planetd = inflater.inflate(R.layout.info_fragment, container, false);
         tv = (TextView) planetd.findViewById(R.id.dialogFragment);
 
-
+        //Save Instance State
         if (myBundle != null) {
             temp = myBundle.getString(test);
             updateText(temp);
-
         }
-
-        //Find layouts
 
         return planetd;
     }
@@ -95,7 +99,6 @@ public class DialogFragment extends android.support.v4.app.Fragment {
             Resources res = getResources();
             String[] planets = res.getStringArray(R.array.descriptions);
             switch (data) {
-
                 case "Sun":
                     tv.setText(planets[0]);
                     break;
@@ -151,11 +154,4 @@ public class DialogFragment extends android.support.v4.app.Fragment {
         void onFragmentInteraction(String uri);
     }
 
-    String temp;
-    String test = "Egg";
-    @Override
-    public void onSaveInstanceState(Bundle myBundle) {
-        myBundle.putString(test, temp);
-        super.onSaveInstanceState(myBundle);
-    }
 }

@@ -26,32 +26,31 @@ public class MainActivity extends AppCompatActivity implements Planets.OnFragmen
 //        planetInfo =nRestoreInstanceState().getString(planetInfo);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Log.d("On Create", "");
+        Log.d("On Create", "On Create");
     }
 
     @Override
     protected void onPause(){
         super.onPause();
-        Log.d("On Pause", "");
+        Log.d("On Pause", "On Pause");
     }
 
     @Override
     protected void onResume(){
         super.onResume();
-        Log.d("On Resume", "");
+        Log.d("On Resume", "On Resume");
     }
 
     @Override
     protected void onDestroy(){
         super.onDestroy();
-        Log.d("On Destroy", "");
+        Log.d("On Destroy", "On Destroy");
     }
 
     @Override
     protected void onRestart(){
         super.onRestart();
-        Log.d("On Restart", "");
+        Log.d("On Restart", "On Restart");
     }
 
 
@@ -62,20 +61,6 @@ public class MainActivity extends AppCompatActivity implements Planets.OnFragmen
         fragmentB.updateText(data);
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle myBundle) {
-// Save the user's current game state
-        myBundle.putString(planetInfo, "Egg");
-// Always call the superclass so it can save the view hierarchy state
-        super.onSaveInstanceState(myBundle);
-    }
-
-    public void onRestoreInstanceState(Bundle myBundle) {
-// Always call the superclass so it can restore the view hierarchy
-        super.onRestoreInstanceState(myBundle);
-// Restore state members from saved instance
-        myBundle.putString(planetInfo, "Egg");
-    }
 
 
 }

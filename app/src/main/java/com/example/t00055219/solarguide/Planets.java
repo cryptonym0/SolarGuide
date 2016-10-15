@@ -21,7 +21,6 @@ import android.view.LayoutInflater;
  * Created by t00055219 on 10/13/2016.
  */
 
-
 public class Planets extends ListFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,6 +31,7 @@ public class Planets extends ListFragment {
     private String mParam1;
     private String mParam2;
     String[] stringname;
+    View previous;
 
     private OnFragmentInteractionListener mListener;
 
@@ -58,8 +58,8 @@ public class Planets extends ListFragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle myBundle) {
+        super.onCreate(myBundle);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -71,7 +71,6 @@ public class Planets extends ListFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View planetview = inflater.inflate(R.layout.list_fragment, container, false);
-
         List<Planet> planetList = new ArrayList<>();
         stringname = getResources().getStringArray(R.array.planet_list);
 
@@ -100,11 +99,19 @@ public class Planets extends ListFragment {
         }
     }
 
+
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
+
         mListener.onFragmentInteraction(stringname[position]);
+//        previous.setSelected(false);
+        v.setSelected(true);
+        previous=v;
+
+
     }
+
 
     @Override
     public void onDetach() {

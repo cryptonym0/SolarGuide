@@ -23,5 +23,12 @@ android:layout_height="match_parent"
         android:layout_weight="10"
         android:textSize="24sp"
         tools:textStyle="bold"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:background="@drawable/list_selector"
+        />
+
+
+
+
 </LinearLayout>
+
