@@ -1,8 +1,12 @@
 package com.example.t00055219.solarguide;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +18,11 @@ import android.net.Uri;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 
-
+import static android.R.attr.id;
+import static android.R.attr.key;
+import static android.R.attr.value;
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.PREPEND;
 
 
 /**
@@ -30,7 +38,7 @@ public class Planets extends ListFragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    String[] stringname;
+    String[] planetArray;
     View previous;
 
     private OnFragmentInteractionListener mListener;
@@ -67,25 +75,30 @@ public class Planets extends ListFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle myBundle) {
         // Inflate the layout for this fragment
         View planetview = inflater.inflate(R.layout.list_fragment, container, false);
         List<Planet> planetList = new ArrayList<>();
-        stringname = getResources().getStringArray(R.array.planet_list);
+        planetArray = getResources().getStringArray(R.array.planet_list);
 
-        for(int i = 0;i<stringname.length;i++){
-            planetList.add(new Planet(stringname[i],i+1));
+        for(int i = 0;i<planetArray.length;i++){
+            planetList.add(new Planet(planetArray[i],i+1));
         }
 
         Adapter a = new Adapter(getContext(),R.layout.row_description,planetList);
-
         ListView listView = (ListView) planetview.findViewById(R.id.Listview);
         listView.setAdapter(a);
 
+//        if(myBundle != null){
+//            pvalue = myBundle.getInt(pkey);
+//            Log.d("Value of index is", "" + pvalue);
+//            previous = a.getView(pvalue, listView, container);
+//            previous.setSelected(true);
+//
+//        }
+
         return planetview;
     }
-
 
 
     @Override
@@ -101,16 +114,35 @@ public class Planets extends ListFragment {
 
 
     @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-
-        mListener.onFragmentInteraction(stringname[position]);
+    public void onListItemClick(ListView l, View v, int i, long id) {
+        super.onListItemClick(l, v, i, id);
+//        if(pvalue != i){
+//            pvalue = i;
+//            mListener.onFragmentInteraction(planetArray[i]);
+//        }
+//        else{
+//            mListener.onFragmentInteraction(planetArray[pvalue]);
+//        }
+        mListener.onFragmentInteraction(planetArray[i]);
 //        previous.setSelected(false);
         v.setSelected(true);
         previous=v;
 
-
     }
+
+//    private int stateToSave;
+//
+//    int pvalue;
+//    String pkey = "";
+
+//    @Override
+//    public void onSaveInstanceState(Bundle myBundle){
+////        myBundle.putInt(pkey, pvalue);
+//        super.onSaveInstanceState(myBundle);
+//        getFragmentManager().putFragment(myBundle, pkey, Planets);
+//    }
+
+
 
 
     @Override

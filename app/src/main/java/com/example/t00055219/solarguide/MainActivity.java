@@ -13,8 +13,6 @@ import static com.example.t00055219.solarguide.R.id.planets;
 public class MainActivity extends AppCompatActivity implements Planets.OnFragmentInteractionListener, DialogFragment.OnFragmentInteractionListener{
 
     //Initialize things
-    String planetInfo = "planetInfo";
-    TextView tv;
     private DialogFragment.OnFragmentInteractionListener mListener;
 
     //try this
@@ -60,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements Planets.OnFragmen
         DialogFragment fragmentB = (DialogFragment) FragManager.findFragmentById(R.id.fragment2);
         fragmentB.updateText(data);
     }
+
 
 
 
