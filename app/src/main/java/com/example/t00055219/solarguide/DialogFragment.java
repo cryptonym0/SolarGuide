@@ -101,33 +101,43 @@ public class DialogFragment extends android.support.v4.app.Fragment {
             switch (data) {
                 case "Sun":
                     tv.setText(planets[0]);
+                    tv.setBackgroundResource(R.drawable.sun);
                     break;
                 case "Mercury":
                     tv.setText(planets[1]);
+                    tv.setBackgroundResource(R.drawable.mercury);
                     break;
                 case "Venus":
                     tv.setText(planets[2]);
+                    tv.setBackgroundResource(R.drawable.venus);
                     break;
                 case "Earth":
                     tv.setText(planets[3]);
+                    tv.setBackgroundResource(R.drawable.earth);
                     break;
                 case "Mars":
                     tv.setText(planets[4]);
+                    tv.setBackgroundResource(R.drawable.mars);
                     break;
                 case "Jupiter":
                     tv.setText(planets[5]);
+                    tv.setBackgroundResource(R.drawable.jupiter);
                     break;
                 case "Saturn":
                     tv.setText(planets[6]);
+                    tv.setBackgroundResource(R.drawable.saturn);
                     break;
                 case "Uranus":
                     tv.setText(planets[7]);
+                    tv.setBackgroundResource(R.drawable.uranus);
                     break;
                 case "Neptune":
                     tv.setText(planets[8]);
+                    tv.setBackgroundResource(R.drawable.neptune);
                     break;
                 case "Pluto":
                     tv.setText(planets[9]);
+                    tv.setBackgroundResource(R.drawable.pluto);
                     break;
             }
         }
