@@ -15,7 +15,11 @@ tools:context="com.example.t00055219.solarguide.DialogFragment">
         android:text="@string/infoPlaceHolder"
         android:id="@+id/dialogFragment"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:background="@drawable/stars"
+        android:textColor="@color/white"
+            />
+
     </ScrollView>
 
 </FrameLayout>

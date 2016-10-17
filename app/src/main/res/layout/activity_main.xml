@@ -23,6 +23,7 @@
         android:layout_height="0dp"
         android:name="com.example.t00055219.solarguide.DialogFragment"
         android:layout_weight="1"
+
         />
 
 
