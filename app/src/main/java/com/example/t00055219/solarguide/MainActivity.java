@@ -51,7 +51,4 @@ public class MainActivity extends AppCompatActivity implements Planets.OnFragmen
         Log.d("Fragment Interaction", "Fragments Should Interact");
     }
 
-
-
-
 }

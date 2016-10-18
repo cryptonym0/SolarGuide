@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,7 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
-
+import android.media.MediaPlayer;
+import java.util.Random;
 import static android.os.FileObserver.CREATE;
 import static android.webkit.WebSettings.PluginState.ON;
 
@@ -33,8 +35,7 @@ public class DialogFragment extends android.support.v4.app.Fragment {
     private TextView tv;
     String temp;
     String test = "";
-    Bitmap draw;
-    String dkey = "";
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -59,7 +60,7 @@ public class DialogFragment extends android.support.v4.app.Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    
+
     @Override
     public void onSaveInstanceState(Bundle myBundle) {
         myBundle.putString(test, temp);
@@ -91,7 +92,6 @@ public class DialogFragment extends android.support.v4.app.Fragment {
         return planetd;
     }
 
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -105,6 +105,7 @@ public class DialogFragment extends android.support.v4.app.Fragment {
 
     public void updateText(String data) {
         temp = data;
+        testSound();
         if (data == null) {
             tv.setText(getString(R.string.infoPlaceHolder));
             tv.setBackgroundResource(R.drawable.stars);
@@ -162,19 +163,14 @@ public class DialogFragment extends android.support.v4.app.Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(String uri);
+    }
+
+    //Sound Files
+    public void testSound(){
+        final MediaPlayer spaceSound = MediaPlayer.create(getActivity(), R.raw.magic);
+        spaceSound.start();
     }
 
 }

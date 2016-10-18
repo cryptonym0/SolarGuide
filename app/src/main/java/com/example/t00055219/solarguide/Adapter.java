@@ -45,6 +45,5 @@ public class Adapter extends ArrayAdapter<Planet> {
             }
         }
         return v;
-
     }
 }

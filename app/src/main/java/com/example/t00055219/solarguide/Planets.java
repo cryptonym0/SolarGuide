@@ -91,7 +91,6 @@ public class Planets extends ListFragment {
         return planetview;
     }
 
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -103,60 +102,20 @@ public class Planets extends ListFragment {
         }
     }
 
-
     @Override
     public void onListItemClick(ListView l, View v, int i, long id) {
         super.onListItemClick(l, v, i, id);
         mListener.onFragmentInteraction(planetArray[i]);
-//        previous.setSelected(false);
         v.setSelected(true);
         previous=v;
     }
-
-//    private int stateToSave;
-//
-//    int pvalue;
-//    String pkey = "";
-//
-////    @Override
-//    public Parcelable onSaveInstanceState(){
-//
-//        Bundle myBundle = new Bundle();
-//        myBundle.putParcelable("SuperState", super.onSaveInstanceState());
-//        myBundle.putInt(pkey, pvalue);
-//        return myBundle;
-////        super.onSaveInstanceState(myBundle);
-////        getFragmentManager().putFragment(myBundle, pkey, Planets);
-//    }
-//
-//    @Override
-//    public void onRestoreInstanceState(Parcelable state){
-//        if(state instanceof Bundle)
-//        {
-//            Bundle myBundle = (Bundle) state;
-//            this.pvalue = myBundle.getInt(pkey);
-//            state = myBundle.getParcelable("SuperState");
-//        }
-//        super.onRestoreInstanceState(state);
-//    }
-//
-
 
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(String uri);
