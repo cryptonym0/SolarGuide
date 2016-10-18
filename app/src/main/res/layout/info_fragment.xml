@@ -17,8 +17,7 @@ tools:context="com.example.t00055219.solarguide.DialogFragment">
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textAlignment="center"
         android:background="@drawable/stars"
-        android:textColor="@color/white"
-            />
+        android:textColor="@color/white" />
 
     </ScrollView>
 

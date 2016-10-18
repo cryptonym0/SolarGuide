@@ -3,11 +3,18 @@ package com.example.t00055219.solarguide;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import static android.os.FileObserver.CREATE;
+import static android.webkit.WebSettings.PluginState.ON;
 
 /**
  * Created by t00055219 on 10/13/2016.
@@ -18,7 +25,7 @@ public class DialogFragment extends android.support.v4.app.Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PLANET_INFO = "param2";
+    private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -26,6 +33,8 @@ public class DialogFragment extends android.support.v4.app.Fragment {
     private TextView tv;
     String temp;
     String test = "";
+    Bitmap draw;
+    String dkey = "";
 
     private OnFragmentInteractionListener mListener;
 
@@ -46,12 +55,11 @@ public class DialogFragment extends android.support.v4.app.Fragment {
         DialogFragment fragment = new DialogFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PLANET_INFO, param2);
+        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
-
-
+    
     @Override
     public void onSaveInstanceState(Bundle myBundle) {
         myBundle.putString(test, temp);
@@ -61,6 +69,10 @@ public class DialogFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle myBundle) {
         super.onCreate(myBundle);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
     }
 
     @Override
@@ -73,9 +85,9 @@ public class DialogFragment extends android.support.v4.app.Fragment {
         //Save Instance State
         if (myBundle != null) {
             temp = myBundle.getString(test);
+            Log.d("Temp Value is:", "This:" + temp);
             updateText(temp);
-        }
-
+       }
         return planetd;
     }
 
@@ -93,8 +105,9 @@ public class DialogFragment extends android.support.v4.app.Fragment {
 
     public void updateText(String data) {
         temp = data;
-        if (data.equals(null)) {
-            tv.setText("Data Is Null");
+        if (data == null) {
+            tv.setText(getString(R.string.infoPlaceHolder));
+            tv.setBackgroundResource(R.drawable.stars);
         } else {
             Resources res = getResources();
             String[] planets = res.getStringArray(R.array.descriptions);

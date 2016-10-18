@@ -43,7 +43,6 @@ public class Adapter extends ArrayAdapter<Planet> {
             if (number != null){
                 number.setText(Integer.toString(planet.getID()));
             }
-
         }
         return v;
 

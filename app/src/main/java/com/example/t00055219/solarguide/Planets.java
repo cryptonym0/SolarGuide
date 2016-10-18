@@ -88,15 +88,6 @@ public class Planets extends ListFragment {
         Adapter a = new Adapter(getContext(),R.layout.row_description,planetList);
         ListView listView = (ListView) planetview.findViewById(R.id.Listview);
         listView.setAdapter(a);
-
-//        if(myBundle != null){
-//            pvalue = myBundle.getInt(pkey);
-//            Log.d("Value of index is", "" + pvalue);
-//            previous = a.getView(pvalue, listView, container);
-//            previous.setSelected(true);
-//
-//        }
-
         return planetview;
     }
 
@@ -116,33 +107,39 @@ public class Planets extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int i, long id) {
         super.onListItemClick(l, v, i, id);
-//        if(pvalue != i){
-//            pvalue = i;
-//            mListener.onFragmentInteraction(planetArray[i]);
-//        }
-//        else{
-//            mListener.onFragmentInteraction(planetArray[pvalue]);
-//        }
         mListener.onFragmentInteraction(planetArray[i]);
 //        previous.setSelected(false);
         v.setSelected(true);
         previous=v;
-
     }
 
 //    private int stateToSave;
 //
 //    int pvalue;
 //    String pkey = "";
-
-//    @Override
-//    public void onSaveInstanceState(Bundle myBundle){
-////        myBundle.putInt(pkey, pvalue);
-//        super.onSaveInstanceState(myBundle);
-//        getFragmentManager().putFragment(myBundle, pkey, Planets);
+//
+////    @Override
+//    public Parcelable onSaveInstanceState(){
+//
+//        Bundle myBundle = new Bundle();
+//        myBundle.putParcelable("SuperState", super.onSaveInstanceState());
+//        myBundle.putInt(pkey, pvalue);
+//        return myBundle;
+////        super.onSaveInstanceState(myBundle);
+////        getFragmentManager().putFragment(myBundle, pkey, Planets);
 //    }
-
-
+//
+//    @Override
+//    public void onRestoreInstanceState(Parcelable state){
+//        if(state instanceof Bundle)
+//        {
+//            Bundle myBundle = (Bundle) state;
+//            this.pvalue = myBundle.getInt(pkey);
+//            state = myBundle.getParcelable("SuperState");
+//        }
+//        super.onRestoreInstanceState(state);
+//    }
+//
 
 
     @Override

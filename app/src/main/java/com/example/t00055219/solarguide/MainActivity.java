@@ -12,16 +12,8 @@ import static com.example.t00055219.solarguide.R.id.planets;
 
 public class MainActivity extends AppCompatActivity implements Planets.OnFragmentInteractionListener, DialogFragment.OnFragmentInteractionListener{
 
-    //Initialize things
-    private DialogFragment.OnFragmentInteractionListener mListener;
-
-    //try this
-    private TextView pInfo;
-    int req_code_1 = 1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        planetInfo =nRestoreInstanceState().getString(planetInfo);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d("On Create", "On Create");
@@ -51,12 +43,12 @@ public class MainActivity extends AppCompatActivity implements Planets.OnFragmen
         Log.d("On Restart", "On Restart");
     }
 
-
     @Override
     public void onFragmentInteraction(String data) {
         FragmentManager FragManager = getSupportFragmentManager();
         DialogFragment fragmentB = (DialogFragment) FragManager.findFragmentById(R.id.fragment2);
         fragmentB.updateText(data);
+        Log.d("Fragment Interaction", "Fragments Should Interact");
     }
 
 
